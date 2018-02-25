@@ -38,6 +38,16 @@ Available options:
 * :rails_env - passing this will add "RAILS_ENV=" together with the environment.
 * :seed - setting this option to true will run seed after migrations. This will also run after test:prepare if that is set to run. Defaults to false.
 
+Use options like this:
+
+    guard "migrate", {
+      reset: true,
+      seed: true
+    } do
+      watch(%r{^db/migrate/(\d+).+\.rb})
+      watch('db/seeds.rb')
+    end
+
 == Todos
 
 * move the customized code to a separate class/module.
